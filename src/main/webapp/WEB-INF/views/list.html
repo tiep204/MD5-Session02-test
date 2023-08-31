@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/add">add mew todo</a>
+<table border="10" cellpadding="10" cellspacing="10">
+    <tr>
+        <th>Id</th>
+        <th>Content</th>
+        <th>Status</th>
+        <th colspan="2">action</th>
+    </tr>
+    <tr th:each="t : ${list}">
+        <td th:text="*{t.id}"></td>
+        <td th:text="*{t.content}"></td>
+        <td th:text="*{t.status}"></td>
+        <td><a href="">Edit</a></td>
+        <td><a th:href="@{|/delete/${t.id}|}">delete</a></td>
+    </tr>
+</table>
+</body>
+</html>

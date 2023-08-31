@@ -17,7 +17,7 @@
         <td th:text="*{t.id}"></td>
         <td th:text="*{t.content}"></td>
         <td th:text="*{t.status}"></td>
-        <td><a href="">Edit</a></td>
+        <td><a th:href="@{|/edit/${t.id}|}">Edit</a></td>
         <td><a th:href="@{|/delete/${t.id}|}">delete</a></td>
     </tr>
 </table>

@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<form action="/edit" method="post" th:object="${todo}">
+    <input type="hidden" name="id" th:field="*{id}">
+    <h1 th:text="${todo.id}"></h1><br>
+    <label>content</label><br>
+    <input type="text" th:field="*{content}"><br>
+    <label>status</label><br>
+    <label>true</label>
+    <input type="radio" th:field="*{status}" value="true"/>
+    <label>false</label>
+    <input type="radio" th:field="*{status}" value="false"/><br>
+    <button type="submit">Edit</button>
+</form>
 </body>
 </html>

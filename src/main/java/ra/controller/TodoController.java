@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ra.model.entity.Todo;
 import ra.model.service.ITodoService;
+import ra.model.serviceImpl.TodoServiceImpl;
 
 import java.util.List;
 
 @Controller
 public class TodoController {
     @Autowired
-    public ITodoService todoService;
+    public TodoServiceImpl todoService;
 
     @GetMapping
     public String list(Model model) {
@@ -38,18 +39,17 @@ public class TodoController {
         return "redirect:/";
     }
 
-    @PostMapping("/edit")
-    public String edit(@ModelAttribute Todo todo) {
-        todoService.save(todo);
-        return "redirect:/";
-    }
-
-
     @GetMapping("/edit/{id}")
     public String showEdit(@PathVariable Long id, Model model) {
         Todo todo = todoService.findById(id);
         model.addAttribute("todo", todo);
-        return "add";
+        return "edit";
+    }
+
+    @PostMapping("/edit")
+    public String edit(@ModelAttribute Todo todo) {
+        todoService.save(todo);
+        return "redirect:/";
     }
 
     @GetMapping("/delete/{id}")
